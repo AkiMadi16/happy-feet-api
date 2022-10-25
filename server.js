@@ -31,7 +31,7 @@ app.use(sessions)
 // Routes
 app.get('/places', (req, res) => {
   console.log(res)
-  res.json({ places })
+  res.json({ places: 'hello world' })
 })
 
 app.post('/places', (req, res) => {

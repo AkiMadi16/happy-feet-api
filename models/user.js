@@ -1,16 +1,16 @@
 const db = require('../db/db')
 
 const User = {
-  create: (name, email, passwordDigest) => {
+  create: (name, email, passwordDigest, PhotoUrl, bio) => {
     const sql = `
-      INSERT INTO users(name, email, password_digest)
-      VALUES ($1, $2, $3)
+      INSERT INTO users(name, email, password_digest, photo_url, bio)
+      VALUES ($1, $2, $3, $4, $5)
       RETURNING *
     `
     // column we use as password_digest and passing as camelcase
 
     return db
-      .query(sql, [name, email, passwordDigest])
+      .query(sql, [name, email, passwordDigest, PhotoUrl, bio])
       .then(dbRes => dbRes.rows[0].email)
   },
 
