@@ -9,7 +9,7 @@ const sessions = require('./middlewares/sessions')
 
 // controllers
 
-
+const placesController = require('./controllers/places_controller')
 const usersController = require('./controllers/users_controller')
 const sessionsController = require('./controllers/sessions_controller')
 
@@ -18,6 +18,10 @@ app.listen(port, () => console.log(`Server listening on ${port}`))
 app.use(logger)
 app.use(express.json())
 app.use(sessions)
+
+app.use('/api/allPlaces', placesController)
+app.use('/api/users', usersController)
+app.use('/api/sessions', sessionsController)
 
 // // You can replace this with a database
 // let places = []
@@ -47,3 +51,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 }
+
+app.get('/bingMapsKey', (req, res) => {
+  res.json(process.env.BING_API_KEY)
+})
