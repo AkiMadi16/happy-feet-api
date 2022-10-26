@@ -34,7 +34,7 @@ app.use('/api/sessions', sessionsController)
 
 // Routes
 app.get('/places', (req, res) => {
-  console.log(res)
+  // console.log(places)
   res.json({ places: 'hello world' })
 })
 

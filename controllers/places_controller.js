@@ -13,11 +13,12 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const name = req.body.name
-  const image= req.body.image
+  const img= req.body.img
   const address = req.body.address
+  const userEmail = req.body.userEmail
  
   Place
-  .create(name, image, address)
+  .create(name, img, address, userEmail)
   .then(place => res.json(place))
 })
 

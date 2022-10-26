@@ -8,14 +8,14 @@ const Place = {
     .then(dbRes => dbRes.rows)
   },
 
-  create: (name, image, address) => {
+  create: (name, img, address, user_email) => {
     const sql = `
-    INSERT INTO places(name, image, address)
-    VALUES ($1, $2, $3)
+    INSERT INTO places(name, img, address, user_email)
+    VALUES ($1, $2, $3, $4)
     RETURNING *
     `
     return db
-    .query(sql, [name, image, address])
+    .query(sql, [name, img, address, user_email])
     .then(dbRes => dbRes.rows[0])
   },
 
