@@ -16,6 +16,7 @@ const sessionsController = require('./controllers/sessions_controller')
 app.listen(port, () => console.log(`Server listening on ${port}`))
 
 app.use(logger)
+app.use(express.static(`client`))
 app.use(express.json())
 app.use(sessions)
 
@@ -35,7 +36,7 @@ app.use('/api/sessions', sessionsController)
 // Routes
 app.get('/places', (req, res) => {
   // console.log(places)
-  res.json({ places: 'hello world' })
+  res.json({ places: places })
 })
 
 app.post('/places', (req, res) => {
