@@ -6,7 +6,8 @@ CREATE TABLE places(
   name TEXT,
   img TEXT,
   address TEXT,
-  user_email TEXT
+  user_email TEXT,
+  site TEXT
 );
 
 SELECT * FROM places;
@@ -17,7 +18,8 @@ CREATE TABLE users(
     email TEXT,
     password_digest TEXT,
     photo_url TEXT,
-    bio TEXT
+    bio TEXT,
+    location TEXT
 );
 
 SELECT * FROM users;
