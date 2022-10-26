@@ -16,22 +16,12 @@ const sessionsController = require('./controllers/sessions_controller')
 app.listen(port, () => console.log(`Server listening on ${port}`))
 
 app.use(logger)
-app.use(express.static(`client`))
 app.use(express.json())
 app.use(sessions)
 
 app.use('/api/allPlaces', placesController)
 app.use('/api/users', usersController)
 app.use('/api/sessions', sessionsController)
-
-// // You can replace this with a database
-// let places = []
-
-// fetch('/places')
-//  .then(res => res.json())
-//  .then(res => console.log(res))
-
-
 
 // Routes
 app.get('/places', (req, res) => {
@@ -44,6 +34,10 @@ app.post('/places', (req, res) => {
   res.json({ places })
 })
 
+app.get('/bingMapsKey', (req, res) => {
+  res.json(process.env.BING_API_KEY)
+})
+
 if (process.env.NODE_ENV === 'production') {
   const path = require('path')
   app.use(express.static(path.join(__dirname, 'build')));
@@ -53,6 +47,3 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get('/bingMapsKey', (req, res) => {
-  res.json(process.env.BING_API_KEY)
-})
