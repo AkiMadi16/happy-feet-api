@@ -46,8 +46,8 @@ app.post('/users', (req, res) => {
 })
 
 
-app.get('/bingMapsKey', (req, res) => {
-  res.json(process.env.REACT_APP_BING_API_KEY)
+app.get('/googleMapsKey', (req, res) => {
+  res.json(process.env.REACT_APP_GOOGLE_MAP_API_KEY)
 })
 
 if (process.env.NODE_ENV === 'production') {

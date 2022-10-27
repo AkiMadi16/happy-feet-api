@@ -35,9 +35,19 @@ findById: id => {
   return db
     .query(sql, [id])
     .then(dbRes => dbRes.rows[0].email)
+},
+
+update: (email, name, photoUrl, bio)  => {
+  const sql = `
+    UPDATE users set name = $2, photo_url = $3, bio = $4
+    WHERE email = $1
+    RETURNING *
+  `
+
+  return db
+    .query(sql, [email, name, photoUrl, bio])
+    .then(dbRes => dbRes.rows[0])
 }
 }
-
-
 
 module.exports = User
