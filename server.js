@@ -34,8 +34,20 @@ app.post('/places', (req, res) => {
   res.json({ places })
 })
 
+// Routes
+app.get('/users', (req, res) => {
+  // console.log(users)
+  res.json({ users: users })
+})
+
+app.post('/users', (req, res) => {
+  users = req.body.users
+  res.json({ users })
+})
+
+
 app.get('/bingMapsKey', (req, res) => {
-  res.json(process.env.BING_API_KEY)
+  res.json(process.env.REACT_APP_BING_API_KEY)
 })
 
 if (process.env.NODE_ENV === 'production') {
