@@ -1,11 +1,10 @@
-const db = require('../db/db')
+const db = require("../db/db");
 
 const Place = {
   findAll: () => {
-    const sql = 'SELECT * FROM places';
+    const sql = "SELECT * FROM places";
 
-    return db.query(sql)
-    .then(dbRes => dbRes.rows)
+    return db.query(sql).then((dbRes) => dbRes.rows);
   },
 
   create: (name, img, address, user_email) => {
@@ -13,19 +12,18 @@ const Place = {
     INSERT INTO places(name, img, address, user_email)
     VALUES ($1, $2, $3, $4)
     RETURNING *
-    `
+    `;
     return db
-    .query(sql, [name, img, address, user_email])
-    .then(dbRes => dbRes.rows[0])
+      .query(sql, [name, img, address, user_email])
+      .then((dbRes) => dbRes.rows[0]);
   },
 
-
-  delete: placeId => {
+  delete: (placeId) => {
     const sql = `
     DELETE FROM places WHERE id = $1
-    `
-    return db.query(sql, [placeId])
-  }
-}
+    `;
+    return db.query(sql, [placeId]);
+  },
+};
 
-module.exports = Place
+module.exports = Place;
