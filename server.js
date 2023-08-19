@@ -7,7 +7,6 @@ const logger = require("./middlewares/logger");
 const sessions = require("./middlewares/sessions");
 
 // controllers
-
 const placesController = require("./controllers/places_controller");
 const usersController = require("./controllers/users_controller");
 const sessionsController = require("./controllers/sessions_controller");
